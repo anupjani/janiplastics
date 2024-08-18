@@ -1,0 +1,13 @@
+code
+{
+	font:"Verdana";
+	color:white;
+}
+#btnStyle
+{
+	background-color: #E0E0E0; 
+	height: 25px; 
+	width: 160px; 
+	font: bold 16px Verdana; 
+	color: #2929A3;
+}
