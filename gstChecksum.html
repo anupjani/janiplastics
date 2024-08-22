@@ -1,0 +1,85 @@
+<!-- || Aum Shree Ganeshaay Nama: || -->
+<!-- || Aum Shree Hanumatey Nama: || -->
+<html>
+	<head>
+		<meta name="description" content="Plastic manufacturer extruder Soft PVC Beading Profiles PVC compounds PVC pipes pp Nylon tubes cotton buds sticks stirrers I-tubes Flanges Catheters Spray fine tubes ballpen refills Lollypop sticks Filaments 3D Printers acrylic sheet laser cutter" />
+		<meta name="keywords" content="Jani Plastics, Plastics, Plastic, HDPE, High density polyethylene, PVC, Polyvinyl chloride, LDPE, Low density polyethylene, LLDPE, Linear low density polyethylene, PP, PPCP, Random Copolymer, Random PP, Polypropylene, PS, Polystyrene, ABS, Acrylonitrile Butadiene Styrene, Nylon, Extrusion, Extruder, Pipe, Pipes, Tube, Tubes, Drinking Stirrer, Cotton bud, Cotton buds, Cannula, Lollypop lolipop, lollipop, sticks, acrylic, sheet, nameplates, nameplate, rubberstamp, rubber stamps" />
+		<meta name="author" content="Jani Plastics - Anup Jani" />
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<title>Jani Plastics - Plastic manufacturer (Extruder)</title>
+		<style type="text/css">
+		td
+		{
+			font-family:"verdana";
+			font-size:18px;
+			font-style: oblique;
+			font-weight: bold;
+		}
+		</style>
+	</head>
+    <script>
+        class GSTChecksum {
+            constructor(GSTN) {
+                this.numAlphaStr = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                this.lengthOfNumAlphaStr = this.numAlphaStr.length;
+                this.GSTN = GSTN;
+                this.sumOfHashes = 0;
+                this.checkSumCode = 0;
+                this.correspondingVal = "";
+            }
+
+            runChecksum() {
+                let outputHTML = `
+                    <div class="result">----------------------------------------------</div>
+                `;
+
+                for (let i = 0; i < this.GSTN.length; i++) {
+                    let numAlphaStrDigit = String(this.GSTN.charAt(i));
+                    let numAlphaStrDigitWeight = this.numAlphaStr.indexOf(numAlphaStrDigit);
+                    let placeValueFactor = (i % 2 === 0 ? 1 : 2);
+                    let product = numAlphaStrDigitWeight * placeValueFactor;
+                    let remainder = (product % this.lengthOfNumAlphaStr);
+                    let quotient = Math.floor(product / this.lengthOfNumAlphaStr);
+                    let s = quotient + remainder;
+                    this.sumOfHashes += s;
+                }
+
+                this.checkSumCode = this.lengthOfNumAlphaStr - (this.sumOfHashes % this.lengthOfNumAlphaStr);
+                this.correspondingVal = String(this.numAlphaStr.charAt(this.checkSumCode));
+
+                outputHTML += `
+                    <div class="result"><strong>Corresponding Value:</strong> ${this.correspondingVal}</div>
+                    <div class="result">---------------------------------------------------</div>
+                    <div class="result"><strong>Complete GST Number (15 Digits):</strong> ${this.GSTN}${this.correspondingVal}</div>
+                    <div class="result">If corresponding value is the last letter of your GST number then it has passed checksum test.
+                    <div class="result"><strong>Courtesy www.janisoftwares.in</strong></div>
+                    <div class="result">---------------------------------------------------</div>
+                `;
+                document.getElementById("output").innerHTML = outputHTML;
+            }
+        }
+
+        function calculateChecksum() {
+            let GSTN = document.getElementById("gstnInput").value;
+            if (GSTN.length === 14) {
+                let cs = new GSTChecksum(GSTN);
+                cs.runChecksum();
+            } else {
+                alert("Please enter a 14-digit GST number.");
+            }
+        }
+    </script>
+</head>
+<body background="images/www_janiplastics_in.jpg">
+    <h1>Podcast Channel on GST of India (and Australia). </h1>
+    <a href="https://Youtube.com/@GSTBlueSaffron" target="_blank"><button type="submit">GST Blue Saffron</button></a>
+    <br><br>
+    <h1>GST Validator</h1>
+    <a href="https://services.gst.gov.in/services/searchtp" target="_blank"><button type="submit">Click to search GST Payer in INDIA</button></a>
+    <br><br>
+    <h1>GST Checksum Calculator</h1>
+    Enter the first 14 digit of your GST number to test whether your GST number passes the checksum logic.
+    <br><input type="text" id="gstnInput" placeholder="Enter 14-digit GST number">
+    <button onclick="calculateChecksum()">Calculate Checksum</button>
+    <div id="output"></div>
+</body>
