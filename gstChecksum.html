@@ -7,6 +7,16 @@
 		<meta name="author" content="Jani Plastics - Anup Jani" />
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 		<title>Jani Plastics - Plastic manufacturer (Extruder)</title>
+        <style>
+            input.ng-invalid {
+                background-color:pink;
+            }
+            input.ng-valid {
+                background-color:lightgreen;
+            }
+            </style>
+            <body ng-app="">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
 		<style type="text/css">
 		td
 		{
@@ -81,8 +91,10 @@
     <a href="https://services.gst.gov.in/services/searchtp" target="_blank"><button type="submit">Click to search GST Payer in INDIA</button></a>
     <br><br>
     <h1>GST Checksum Calculator</h1>
-    Enter the first 14 digit of your GST number to test whether your GST number passes the checksum logic.
-    <br><input type="text" id="gstnInput" placeholder="Enter 14-digit GST number">
+    Enter the first 14 digit of your GST number to test whether your GST number passes the checksum logic.<br>
+    <form name=""checkSumForm">
+        <input type="text" id="gstnInput" placeholder="Enter 14-digit GST number" name="checkSumName" ng-model="checkSumName" required>
+    </form>
     <button onclick="calculateChecksum()">Calculate Checksum</button>
     <div id="output"></div>
     <br><br>
